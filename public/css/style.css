@@ -1,0 +1,74 @@
+body {
+  padding-top: 70px;
+}
+.title {
+  padding: 10px 5px 0 20px;
+  font-weight: bold;
+}
+.version {
+  font-size: 9px;
+  color: #808080;
+}
+/*a.navbar-brand:hover, 
+a.navbar-brand:visited  {
+  color: #005691 !important;
+}*/
+
+a.navbar-brand:link, a.navbar-brand     { color: black !important; }
+a.navbar-brand:visited                  { color: black !important; }
+a.navbar-brand:active                   { color: #005691 !important; }
+a.navbar-brand:hover                    { color: #005691 !important; }
+
+.navbar-brand {
+  display: inline-flex;
+  height: 70px !important;
+  line-height: 28px;
+  padding-top: 10px;
+  padding-bottom: 5px;
+}
+
+@media (min-width:768px){.navbar-toggle{
+  display: inline !important; 
+  margin-top: 18px !important;
+}}
+
+.navbar-right .btn{
+  margin: 15px 0 0 5px;
+}
+
+.navbar-brand-image {
+  height: 50px;
+  margin-left: 0px;
+  margin-right: 10px;
+  margin-top: 0px;
+}
+.starter-template {
+  padding: 15px 15px;
+  text-align: center;
+}
+.navbar-inverse .navbar-brand {
+	font-size: 12px;
+	color: #000;
+}
+.navbar-inverse {
+  background: #FFFFFF !important;
+}
+
+.container {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.jumbotron {
+	margin-top: 30px;	
+}
+
+/*h4 {
+  margin-top: 25px;
+}
+*/
+
+hr {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}

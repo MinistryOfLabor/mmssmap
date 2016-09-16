@@ -1,0 +1,62 @@
+<div class="container">
+    <div class="navbar-header">
+        
+        <a class="navbar-brand" href="#">
+            <img class="navbar-brand-image" src="/img/logo.png">
+            <span class="title">Harta furnizorilor de servicii sociale</span><br />
+            <span class="version">Beta v.0.5</span>
+        </a>
+    </div>
+    <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+            
+        </ul>
+        <ul class="nav navbar-nav navbar-right">            
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#FiltersModal">Criterii filtrare</button>
+            <button type="button" class="btn btn-success">Log in</button>
+        </ul>
+        
+    </div>
+    <!--/.nav-collapse -->
+</div>
+<!-- Modal -->
+<div class="modal fade" id="FiltersModal" tabindex="-1" role="dialog" aria-labelledby="Filters">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="ModalLabel">Criterii de filtrare</h4>
+      </div>
+      <div class="modal-body">         
+          <form>
+            <div class="form-group row">
+              <label for="județ" class="col-sm-2 col-form-label">Județ</label>
+              <div class="col-sm-10">
+                <select class="form-control" id="county">
+                    <option selected value="">Selectează</option>
+                    @{foreach var m in model.counties}
+                    <option value="@{m}">@{m}</option>          
+                    @{end}
+                </select>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="serviciu" class="col-sm-2 col-form-label">Serviciu</label>
+              <div class="col-sm-10">
+                <select class="form-control" id="service">
+                    <option selected value="">Selectează</option>
+                    @{foreach var m in model.services}
+                    <option value="@{m}">@{m}</option>  
+                    @{end}
+                </select>
+              </div>
+            </div>
+          </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Închide</button>
+        <button id="Filter" type="button" class="btn btn-primary">Salvează</button>
+      </div>
+    </div>
+  </div>
+</div>

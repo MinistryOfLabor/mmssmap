@@ -1,0 +1,14 @@
+name                            : Harta Serviciilor Sociale
+author                          : iELLO
+version                         : 1.0.0
+secret                          : iello@-z$i)06s8i!(&dsoi)8i&5wgrwk)7tj7z5xl(1f$1y0$18o9@
+
+//YOUR-CONNECTION-STRING-POSTGRESQL
+database						: postgres://username:password@server_ip:5432/database 
+
+// Mail settings
+mail.smtp                       : smtp.yourwebsite.com
+mail.smtp.options               : {"secure":false,"port":25,"user":"","password":"","timeout":10000}
+mail.address.from               : your@yourwebsite.com
+mail.address.reply              : your@yourwebsite.com
+//mail.address.bcc                :
