@@ -2,20 +2,18 @@
 
 ## Description
 
-Web application to display and manage social services providers 
+Web application to display and manage social services providers. 
 
-## Technologies:
+## Technologies
 - Node.JS + Total.JS Framework (server side)
 - Leaflet.JS (javascript map)
 - Bootstrap (css)
 - PostgreSQL Database
  
-## Features:
+## Features
  - GeoJSON map provided by Openstreetmap
 
-## To do:
-
-- Filters
+## To do
 - Backend for administration and auto geocoding 
 
 ## Install dependencies
