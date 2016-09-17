@@ -1,6 +1,4 @@
-# Project Teres
-
-# Romania Social Services Provider Map
+# Social Services Provider Map 
 
 ## Description
 
