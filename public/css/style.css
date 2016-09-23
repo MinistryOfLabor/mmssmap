@@ -9,7 +9,7 @@ body {
   font-size: 9px;
   color: #808080;
 }
-/*a.navbar-brand:hover, 
+/*a.navbar-brand:hover,
 a.navbar-brand:visited  {
   color: #005691 !important;
 }*/
@@ -28,7 +28,7 @@ a.navbar-brand:hover                    { color: #005691 !important; }
 }
 
 @media (min-width:768px){.navbar-toggle{
-  display: inline !important; 
+  display: inline !important;
   margin-top: 18px !important;
 }}
 
@@ -60,7 +60,7 @@ a.navbar-brand:hover                    { color: #005691 !important; }
 }
 
 .jumbotron {
-	margin-top: 30px;	
+	margin-top: 30px;
 }
 
 /*h4 {
@@ -71,4 +71,11 @@ a.navbar-brand:hover                    { color: #005691 !important; }
 hr {
   margin-top: 40px;
   margin-bottom: 40px;
+}
+
+@media (max-width: 568px) {
+  .title {
+    line-height: 1.2;
+    padding-top: 0;
+  }
 }
