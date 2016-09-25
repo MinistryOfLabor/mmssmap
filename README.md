@@ -23,6 +23,33 @@ Web application to display and manage social services providers.
 - $ npm install sqlagent
 - $ npm install node-geocoder
 
+## Database schema
+
+```
+-- Table: "PROVIDERS"
+
+-- DROP TABLE "PROVIDERS";
+
+CREATE TABLE "PROVIDERS"
+(
+  "ID" bigint NOT NULL DEFAULT nextval('providers_id_seq'::regclass),
+  "NAME" character(255),
+  "ADDRESS" character varying(255),
+  "CITY" character varying(255),
+  "COUNTY" character varying(255),
+  "SOCIAL_SERVICE" character varying(255),
+  "CATEGORY" character varying(255),
+  "EMAIL" character varying(100),
+  "PHONE" character varying(100),
+  "LATITUDE" double precision,
+  "LONGITUDE" double precision,
+  CONSTRAINT "ID_PK" PRIMARY KEY ("ID")
+)
+WITH (
+  OIDS=FALSE
+);
+```
+
 ## Contribute
 Anyone is encouraged to contribute to the project by forking and submitting a pull request.
 
