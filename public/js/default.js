@@ -17,7 +17,9 @@ function loadMap (options) {
           var popupText = "<b>" + feature.properties.name + "</b>"
               + "<br>Adresa: " + feature.properties.address 
               + ", " + feature.properties.city
-              + ", Județul " + feature.properties.county;
+              + ", Județul " + feature.properties.county
+              + ", <br />Tel.: " + feature.properties.phone
+              + ", <br />Email: " + feature.properties.email;
           layer.bindPopup(popupText); 
       }
   });       

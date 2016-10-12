@@ -1,0 +1,33 @@
+<h1>Rezultat geocodare adrese</h1>
+<table border="1" width="100%">
+  <thead>
+    <tr>
+      <td width="5%"><strong>ID</strong></td>
+      <td width="50%"><strong>Adresa</strong></td>
+      <td width="10%"><strong>Localitate</strong></td>
+      <td width="10%"><strong>Judet</strong></td>
+      <td width="10%"><strong>Latitudine</strong></td>
+      <td width="10%"><strong>Longitudine</strong></td>
+      <td width="5%"></td>
+    </tr>
+  </thead>
+  <tbody>
+    @{foreach var m in model.providers}
+    <tr>
+      <td>@{m.ID}</td>
+      <td>@{m.NO} @{m.STREET}</td>
+      <td>@{m.CITY}</td>
+      <td>@{m.COUNTY}</td>
+      <td>@{m.LATITUDE}</td>
+      <td>@{m.LONGITUDE}</td>
+      <td align="center">
+        @{if m.SUCCESS == 'true'}
+        <font color="green">&#x2714;</font>
+        @{else}
+        <font color="red">&#x2718;</font>
+        @{fi}
+      </td>
+    </tr>
+    @{end}
+  </tbody>  
+</table>    

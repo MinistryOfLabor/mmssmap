@@ -47,8 +47,8 @@ a.navbar-brand:hover                    { color: #005691 !important; }
   text-align: center;
 }
 .navbar-inverse .navbar-brand {
-	font-size: 12px;
-	color: #000;
+  font-size: 12px;
+  color: #000;
 }
 .navbar-inverse {
   background: #FFFFFF !important;
@@ -60,7 +60,7 @@ a.navbar-brand:hover                    { color: #005691 !important; }
 }
 
 .jumbotron {
-	margin-top: 30px;
+  margin-top: 30px;
 }
 
 /*h4 {
