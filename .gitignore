@@ -1,8 +1,8 @@
 # Tmp folder
-tmp/
+tmp/*
 
 # Node modules
-node_modules/
+node_modules/*
 
 
 
