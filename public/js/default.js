@@ -1,5 +1,5 @@
 function loadMap (options) {
-  var url = (options == undefined) ? "/providers/" : "/providers/county/" + options.county + "/service/" + options.service + "/category/" + options.category;
+  var url = (options == undefined) ? "/providers/" : "/providers/county/" + options.county + "/service/" + options.service + "/category/" + options.category + "/";
 
   if (options !== undefined) {
     map.off();
@@ -36,15 +36,11 @@ $(document).ready(function() {
       $('#Filter').on('click', function(event) {
         event.preventDefault(); // To prevent following the link (optional)
 
-          //Add form filter to Get params and reload Map
-
-          var county = ($("#county").val().length > 0) ? $("#county").val() : '-';
-          console.log(county);
-          
+          //Add form filter to Get params and reload Map          
           loadMap({
-            "county": ($("#county").val().length > 0) ? $("#county").val() : '-', 
-            "service": ($("#service").val().length > 0) ? $("#service").val() : '-', 
-            "category": ($("#category").val().length > 0) ? $("#category").val() : '-', 
+            "county": ($("#county").length > 0) ? $("#county").val() : '-', 
+            "service": ($("#service").length > 0) ? $("#service").val() : '-', 
+            "category": ($("#category").length > 0) ? $("#category").val() : '-'
           });
 
           //Close modal

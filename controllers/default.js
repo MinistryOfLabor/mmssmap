@@ -163,7 +163,7 @@ function view_code() {
 
 			//Geocode its address
 			geocoder.geocode( NO + STREET.trim() + CITY.trim() + COUNTRY, function(error, res) {
-				console.log(res);
+				//console.log(res);
 
 				if ((res !== "undefined") && (res.length > 0)) {
 
