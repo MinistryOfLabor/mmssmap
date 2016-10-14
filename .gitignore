@@ -4,5 +4,5 @@ tmp/*
 # Node modules
 node_modules/*
 
-
-
+# Config file
+config
