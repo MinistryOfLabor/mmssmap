@@ -6,3 +6,8 @@ node_modules/*
 
 # Config file
 config
+
+tmp/*
+
+# PID
+debug.pid
