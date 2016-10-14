@@ -1,7 +1,7 @@
 exports.install = function() {
 	F.route('/', view_index);
 	F.route('/providers/', view_providers);
-	F.route('/providers/county/{pCounty}/service/{pService}/', view_providers);
+	F.route('/providers/county/{pCounty}/service/{pService}/category/{pCategory}/', view_providers);
 	F.route('/code/', view_code);
 };
 
@@ -34,12 +34,13 @@ function view_index() {
 	});
 }
 
-function view_providers(pCounty, pService) {
+function view_providers(pCounty, pService, pCategory) {
 	var self 		= this;
 	var county, service;
 	
 	county 			= ( (pCounty !== undefined) && (pCounty != '-') ) ? decodeURI(pCounty) : '';
 	service 		= ( (pService !== undefined) && (pService != '-') ) ? decodeURI(pService) : '';
+	category 		= ( (pCategory !== undefined) && (pCategory != '-') ) ? decodeURI(pCategory) : '';
 
 	var sql  		= DATABASE();
 	var Locations	= {
@@ -63,6 +64,10 @@ function view_providers(pCounty, pService) {
 
 	if (service != '') {
 		select.where('"SOCIAL_SERVICE"', service);
+	}
+
+	if (category != '') {
+		select.like('"CATEGORY"', category, '*');
 	}
 	//- - - - - - - - 
 	// End of dynamic where
@@ -106,7 +111,6 @@ function view_providers(pCounty, pService) {
 				}
 			}
 		});
-		console.log(Locations.features.length);
 
 		self.json(Locations);
 	});
@@ -115,18 +119,19 @@ function view_providers(pCounty, pService) {
 function view_code() {
 	var self 			= this;	
 	var sql 			= DATABASE();		
-	var country			= "România";	
 
 	//Node-Geocoder
 	var NodeGeocoder 	= require('node-geocoder');
 	var options = {
 	  //provider: 'openmapquest',
-	  provider: 'opencage',
+	  //provider: 'opencage',
+	  provider: 'google',
 	  thumbMaps: false,
 	  maxResults: 1,
-	  httpAdapter: 'http',
+	  httpAdapter: 'https',
 	  //apiKey: 'gmWfsYhW6sGeMj5RGraVsvBdYoWXbEzu',
-	  apiKey: '00813ac0165dc58e255301ead989c39a',
+	  //apiKey: '00813ac0165dc58e255301ead989c39a',
+	  apiKey: 'AIzaSyBrNSZa1sTTwN5p-8l6QJQtXuc833Szmh4',
 	  formatter: null
 	};
 	var geocoder = NodeGeocoder(options);
@@ -143,17 +148,27 @@ function view_code() {
 		//For each database record
 		Object.keys(response.providers).forEach(function(key,index) {							
 			response.providers[key].SUCCESS = true;
-			//var MyAddress = response.providers[key].NO + " " + response.providers[key].STREET + ',' + response.providers[key].CITY;
+			
+
+			var NO 		= (typeof response.providers[key].NO !== 'undefined' && response.providers[key].NO !== null) ? response.providers[key].NO + " " : "";
+			var STREET 	= (typeof response.providers[key].STREET !== 'undefined' && response.providers[key].STREET !== null) ? response.providers[key].STREET + "," : "";
+			var COUNTY 	= (typeof response.providers[key].COUNTY !== 'undefined' && response.providers[key].COUNTY !== null) ? response.providers[key].COUNTY + "," : ""
+			var CITY 	= response.providers[key].CITY + ",";
+			var COUNTRY = "România";
+
+			// console.log(NO);
+			// console.log(response.providers[key].STREET);
+			// console.log("Address: " + NO + STREET.trim() + CITY.trim() + COUNTRY);
+			// console.log("--------------------");
 
 			//Geocode its address
-			geocoder.geocode(response.providers[key].NO + " " + response.providers[key].STREET + ',' + response.providers[key].CITY + ',' + response.providers[key].COUNTY + ',' + country, function(error, res) {
-			//geocoder.geocode({address: MyAddress, countryCode: 'ro', minConfidence: 0.5, limit: 1}, function(err, res) {
-				//console.log(res);
+			geocoder.geocode( NO + STREET.trim() + CITY.trim() + COUNTRY, function(error, res) {
+				console.log(res);
 
 				if ((res !== "undefined") && (res.length > 0)) {
 
 					//If address is found
-				  	if (res[0].extra.confidence <= 10) {
+				  	if (res[0].extra.confidence >= 0.5) {
 
 				  		//Update database record
 						sql.update('provider', '"PROVIDERS"').make(function(builder) {
@@ -172,7 +187,6 @@ function view_code() {
 						if (err){
 							return self.invalid().push(e);
 						}
-					    //console.log(r.provider); // returns {Number} (count of changed rows)
 					});
 			  	}
 			});

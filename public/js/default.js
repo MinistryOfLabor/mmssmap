@@ -1,5 +1,5 @@
 function loadMap (options) {
-  var url = (options == undefined) ? "/providers/" : "/providers/county/" + options.county + "/service/" + options.service;
+  var url = (options == undefined) ? "/providers/" : "/providers/county/" + options.county + "/service/" + options.service + "/category/" + options.category;
 
   if (options !== undefined) {
     map.off();
@@ -23,7 +23,9 @@ function loadMap (options) {
           layer.bindPopup(popupText); 
       }
   });       
-  geojsonLayer.addTo(map);
+  if (options !== undefined) {
+    geojsonLayer.addTo(map);
+  }
 }
 
 $(document).ready(function() {
@@ -42,6 +44,7 @@ $(document).ready(function() {
           loadMap({
             "county": ($("#county").val().length > 0) ? $("#county").val() : '-', 
             "service": ($("#service").val().length > 0) ? $("#service").val() : '-', 
+            "category": ($("#category").val().length > 0) ? $("#category").val() : '-', 
           });
 
           //Close modal
