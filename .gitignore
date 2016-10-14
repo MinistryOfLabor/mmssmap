@@ -4,17 +4,10 @@ tmp/*
 # Node modules
 node_modules/*
 
-# Config file
-config
-
 tmp/*
 
 # PID
 debug.pid
 config
 
-config
-
-config
-
-config
+release.js
