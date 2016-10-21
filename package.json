@@ -1,0 +1,11 @@
+{
+  "name": "mmssmap",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "node-geocoder": "^3.15.1",
+    "pg": "^4.1.1",
+    "sqlagent": "^9.3.0",
+    "total.js": "^2.1.0"
+  }
+}
